@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Screen Sizer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        code { background: #f4f4f4; padding: 2px 4px; }
+    </style>
+</head>
+<body>
+    <h1>Screen Sizer</h1>
+    <p id="window-size">Window size: </p>
+    <p id="screen-size">Screen resolution: </p>
+
+    <script>
+        function updateSize() {
+            var winWidth = window.innerWidth;
+            var winHeight = window.innerHeight;
+            document.getElementById('window-size').textContent =
+                'Window size: ' + winWidth + 'x' + winHeight;
+
+            var screenWidth = window.screen.width;
+            var screenHeight = window.screen.height;
+            document.getElementById('screen-size').textContent =
+                'Screen resolution: ' + screenWidth + 'x' + screenHeight;
+        }
+        window.addEventListener('load', updateSize);
+        window.addEventListener('resize', updateSize);
+    </script>
+</body>
+</html>
