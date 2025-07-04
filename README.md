@@ -1,19 +1,21 @@
 # Screen-sizer
 
-This repository provides a simple tool to report the size of your terminal or browser window. Originally it included only a Python script, but you can now view the information directly in your browser using the included web page.
+A minimal web application for checking your window and display dimensions.
 
-## Usage
+## Webapp
 
-Run the script using Python:
+Open `index.html` directly in a browser, or run the Python helper script to
+launch it automatically:
 
 ```bash
 python3 screen_size.py
 ```
 
-The script will output the terminal size and, if Tkinter can access your display, the screen resolution.
+The page shows your current window size, screen resolution and an approximate
+physical display size based on a 96 DPI assumption. Values update as you resize
+the browser.
 
-## Website
+## Python script
 
-Open `index.html` in any modern web browser. The page will display the current
-window size and your screen's resolution. Resizing the browser window updates
-the values automatically.
+When run, `screen_size.py` prints the terminal size and screen resolution (if
+available) before opening the web interface.

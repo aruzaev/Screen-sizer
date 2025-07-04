@@ -4,26 +4,44 @@
     <meta charset="UTF-8">
     <title>Screen Sizer</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 2em; }
-        code { background: #f4f4f4; padding: 2px 4px; }
+        body {
+            background: #000;
+            color: #0f0;
+            font-family: "Courier New", monospace;
+            margin: 2em;
+        }
+        h1 {
+            text-shadow: 0 0 5px #0f0;
+        }
+        p {
+            margin: 0.5em 0;
+        }
     </style>
 </head>
 <body>
     <h1>Screen Sizer</h1>
     <p id="window-size">Window size: </p>
     <p id="screen-size">Screen resolution: </p>
+    <p id="display-size">Display size: </p>
 
     <script>
         function updateSize() {
             var winWidth = window.innerWidth;
             var winHeight = window.innerHeight;
             document.getElementById('window-size').textContent =
-                'Window size: ' + winWidth + 'x' + winHeight;
+                'Window size: ' + winWidth + ' x ' + winHeight;
 
             var screenWidth = window.screen.width;
             var screenHeight = window.screen.height;
             document.getElementById('screen-size').textContent =
-                'Screen resolution: ' + screenWidth + 'x' + screenHeight;
+                'Screen resolution: ' + screenWidth + ' x ' + screenHeight;
+
+            var ratio = window.devicePixelRatio || 1;
+            var widthIn = screenWidth / (ratio * 96);
+            var heightIn = screenHeight / (ratio * 96);
+            var diag = Math.sqrt(widthIn * widthIn + heightIn * heightIn);
+            document.getElementById('display-size').textContent =
+                'Approx. display size: ' + diag.toFixed(1) + '" (' + widthIn.toFixed(1) + ' x ' + heightIn.toFixed(1) + ' in)';
         }
         window.addEventListener('load', updateSize);
         window.addEventListener('resize', updateSize);

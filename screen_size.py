@@ -1,15 +1,18 @@
 import os
+import webbrowser
 
 try:
     from tkinter import Tk
 except Exception:
     Tk = None
 
+
 def get_terminal_size():
     try:
         return os.get_terminal_size()
     except OSError:
         return None
+
 
 def get_screen_size():
     if Tk is None:
@@ -23,6 +26,7 @@ def get_screen_size():
         return width, height
     except Exception:
         return None
+
 
 def main():
     term = get_terminal_size()
@@ -38,6 +42,11 @@ def main():
         print(f"Screen resolution: {width}x{height}")
     else:
         print("Screen resolution: unavailable")
+
+    path = os.path.abspath(os.path.join(os.path.dirname(__file__), "index.html"))
+    webbrowser.open("file://" + path)
+    print("Launching web interface...")
+
 
 if __name__ == "__main__":
     main()
