@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Screen Sizer</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
+        #resolution { font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <h1>Screen Sizer</h1>
+    <p id="resolution">Loading...</p>
+    <script>
+        function updateResolution() {
+            const w = window.innerWidth;
+            const h = window.innerHeight;
+            const sw = window.screen.width;
+            const sh = window.screen.height;
+            const text = `Window size: ${w} x ${h} (Screen: ${sw} x ${sh})`;
+            document.getElementById('resolution').textContent = text;
+        }
+        window.addEventListener('resize', updateResolution);
+        updateResolution();
+    </script>
+</body>
+</html>
